@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13d7d41beaf349f2bad49e15ac2b7dcb" Name="Diagram1">
+        <EntityTypeShape EntityType="PhoneStoreModel.Account" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Bank" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Bill" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Comment" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.FavoriteProduct" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Post" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Product" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Shipment" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.ShoppingCart" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Bank__AccountId__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Bill__AccountId__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Comment__Account__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__FavoriteP__Accou__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Shipment__Accoun__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__ShoppingC__Accou__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Bill__ProductId__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Bill__ShipmentId__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Comment__Product__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__FavoriteP__Produ__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__ShoppingC__Produ__2D27B809" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

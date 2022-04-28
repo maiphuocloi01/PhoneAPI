@@ -169,6 +169,21 @@ namespace PhoneAPI.Controllers
             return Ok(await AccountDAO.Instance.UpdateAccount(accountDTO));
         }
 
+        [Route("Api/AccountController/ResetPassword")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> ResetPassword(AccountDTO accountDTO)
+        {
+            return Ok(await AccountDAO.Instance.ResetPassword(accountDTO));
+        }
+
+        [Route("Api/AccountController/ChangeAccountRole")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> ChangeAccountRole(AccountDTO accountDTO)
+        {
+            return Ok(await AccountDAO.Instance.ChangeAccountRole(accountDTO));
+        }
         /* [Route("Api/AccountController/ChangeAccountRole/{Id}")]
          [AllowAnonymous]
          [HttpGet]

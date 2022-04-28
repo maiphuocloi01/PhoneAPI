@@ -32,7 +32,7 @@ namespace PhoneAPI.Models.DTO
 
         public bool? Gender { get; set; }
 
-        public List<FavoriteProductDTO> FavoriteProducts { get; set; }
+        //public List<FavoriteProductDTO> FavoriteProducts { get; set; }
 
         public List<ShoppingCartDTO> ShoppingCarts { get; set; }
 
@@ -55,9 +55,9 @@ namespace PhoneAPI.Models.DTO
             //IsAdmin = account.IsAdmin;
             IsDelete = account.IsDelete;
             Gender = account.Gender;
-            FavoriteProducts = account.FavoriteProducts
+            /*FavoriteProducts = account.FavoriteProducts
                 .Select(favoriteproduct => new FavoriteProductDTO(favoriteproduct))
-                                        .ToList();
+                                        .ToList();*/
             ShoppingCarts = account.ShoppingCarts
                 .Select(shoppingcart => new ShoppingCartDTO(shoppingcart))
                                         .ToList();

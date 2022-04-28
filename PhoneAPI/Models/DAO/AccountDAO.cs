@@ -235,21 +235,19 @@ namespace PhoneAPI.Models.DAO
 
         public async Task<bool> UpdateAccount(AccountDTO accountDTO)
         {
-            var result = db.Accounts.SingleOrDefault(c => c.Id == accountDTO.Id);
-            if (accountDTO.Id == null)
+            var result = db.Accounts.SingleOrDefault(c => c.Email == accountDTO.Email);
+            if (accountDTO.Email == null)
             {
                 result = db.Accounts.SingleOrDefault(c => c.UserName == accountDTO.UserName);
-                if(accountDTO.UserName == null)
+                if (accountDTO.UserName == null)
                 {
-                    result = db.Accounts.SingleOrDefault(c => c.Email == accountDTO.Email);
+                    result = db.Accounts.SingleOrDefault(c => c.Id == accountDTO.Id);
                 }
             }
             try
             {
                 if (!string.IsNullOrWhiteSpace(accountDTO.FullName))
                     result.FullName = accountDTO.FullName;
-                if (!string.IsNullOrWhiteSpace(accountDTO.PassWord))
-                    result.PassWord = Const.CreateMD5(accountDTO.PassWord);
                 if (!string.IsNullOrWhiteSpace(accountDTO.Email))
                     result.Email = accountDTO.Email;
                 if (!string.IsNullOrWhiteSpace(accountDTO.UserName))
@@ -260,8 +258,6 @@ namespace PhoneAPI.Models.DAO
                     result.Avatar = accountDTO.Avatar;
                 if (!string.IsNullOrWhiteSpace(accountDTO.Birthday))
                     result.Birthday = accountDTO.Birthday;
-                if (!string.IsNullOrWhiteSpace(accountDTO.Role))
-                    result.Role = accountDTO.Role;
                 if (accountDTO.Gender != null)
                     result.Gender = accountDTO.Gender;
 
@@ -276,12 +272,15 @@ namespace PhoneAPI.Models.DAO
             }
         }
 
-       /* public async Task<bool> ChangeCustomerRole(int ID)
+        public async Task<bool> ResetPassword(AccountDTO accountDTO)
         {
-            var result = db.Customers.SingleOrDefault(c => c.ID == ID);
+            var result = db.Accounts.SingleOrDefault(c => c.Email == accountDTO.Email);
+            
             try
             {
-                result.IsAdmin = !result.IsAdmin;
+                if (!string.IsNullOrWhiteSpace(accountDTO.PassWord))
+                    result.PassWord = Const.CreateMD5(accountDTO.PassWord);
+
                 await db.SaveChangesAsync();
                 return true;
             }
@@ -290,7 +289,51 @@ namespace PhoneAPI.Models.DAO
                 return false;
                 throw e;
             }
-        }*/
+        }
+
+        public async Task<bool> ChangeAccountRole(AccountDTO accountDTO)
+        {
+            
+            var result = db.Accounts.SingleOrDefault(c => c.Email == accountDTO.Email);
+            if (accountDTO.Email == null)
+            {
+                result = db.Accounts.SingleOrDefault(c => c.UserName == accountDTO.UserName);
+                if (accountDTO.UserName == null)
+                {
+                    result = db.Accounts.SingleOrDefault(c => c.Id == accountDTO.Id);
+                }
+            }
+            try
+            {
+                
+                if (!string.IsNullOrWhiteSpace(accountDTO.Role))
+                    result.Role = accountDTO.Role;
+
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
+
+        /* public async Task<bool> ChangeCustomerRole(int ID)
+         {
+             var result = db.Customers.SingleOrDefault(c => c.ID == ID);
+             try
+             {
+                 result.IsAdmin = !result.IsAdmin;
+                 await db.SaveChangesAsync();
+                 return true;
+             }
+             catch (Exception e)
+             {
+                 return false;
+                 throw e;
+             }
+         }*/
 
         /*public async Task<int> RecycleAppPool()
         {

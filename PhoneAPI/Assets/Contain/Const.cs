@@ -14,7 +14,7 @@ namespace PhoneAPI.Assets.Contain
     public class Const
     {
         //public static readonly string Domain = $"https://localhost:44399/";
-        public static readonly string Domain = $"http://nhom01.somee.com/";
+        public static readonly string Domain = $"https://nhom01.somee.com/";
 
         public static readonly string PostImagePath = Domain + @"Assets/Images/Post/";
         public static readonly string ProductImagePath = Domain + @"Assets/Images/Product/";

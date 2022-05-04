@@ -29,7 +29,7 @@ namespace PhoneAPI.Models.DAO
         //PhoneStoreEntities db = new PhoneStoreEntities();
 
         //PhoneStoreEntities1 db = new PhoneStoreEntities1();
-        PhoneStoreEntities2 db = new PhoneStoreEntities2();
+        PhoneStoreEntities3 db = new PhoneStoreEntities3();
 
         public async Task<List<CommentDTO>> GetAllComment()
         {
@@ -46,7 +46,10 @@ namespace PhoneAPI.Models.DAO
             var comment = new Comment()
             {
                 ProductId = commentDTO.ProductId,
-                AccountId = commentDTO.AccountId,              
+                AccountId = commentDTO.AccountId,
+                FullName = commentDTO.FullName,
+                TypeProduct = commentDTO.TypeProduct,
+                CreateAt = commentDTO.CreateAt,
                 Content = commentDTO.Content,
                 Rating = commentDTO.Rating,
                 IsDelete = false
@@ -121,6 +124,16 @@ namespace PhoneAPI.Models.DAO
                 .Select(c => new CommentDTO(c))
                 .ToList();
             resultList = resultList.FindAll(c => c.ProductId == Id);
+            return resultList;
+        }
+
+        public async Task<List<CommentDTO>> GetCommentByAccountID(int Id)
+        {
+            var resultList = (await db.Comments
+                .ToListAsync())
+                .Select(c => new CommentDTO(c))
+                .ToList();
+            resultList = resultList.FindAll(c => c.AccountId == Id);
             return resultList;
         }
     }

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,12 +47,36 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.Base.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.5.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.5.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocol.Extensions, Version=1.0.40306.1554, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.4.403061554\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.5.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.5.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.5.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.2.1\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
@@ -64,8 +89,14 @@
     <Reference Include="Microsoft.Owin.Security, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.4.2.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OpenIdConnect, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OpenIdConnect.4.0.1\lib\net45\Microsoft.Owin.Security.OpenIdConnect.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -73,6 +104,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.5.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
@@ -276,10 +311,206 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Assets\Images\Account\Default.png" />
     <Content Include="Assets\Images\Post\post1.jpg" />
+    <Content Include="Assets\Images\Product\ASUS-ROG-Phone-3-1.png" />
+    <Content Include="Assets\Images\Product\ASUS-ROG-Phone-3-2.jpg" />
+    <Content Include="Assets\Images\Product\ASUS-ROG-Phone-3-3.jpg" />
+    <Content Include="Assets\Images\Product\ASUS-ROG-Phone-3-4.jpg" />
+    <Content Include="Assets\Images\Product\ASUS-ROG-Phone-5S-1.png" />
+    <Content Include="Assets\Images\Product\ASUS-ROG-Phone-5S-2.jpg" />
+    <Content Include="Assets\Images\Product\ASUS-ROG-Phone-5S-3.jpg" />
+    <Content Include="Assets\Images\Product\ASUS-ROG-Phone-5S-4.jpg" />
+    <Content Include="Assets\Images\Product\galaxy-note-20-1.png" />
+    <Content Include="Assets\Images\Product\galaxy-note-20-2.jpg" />
+    <Content Include="Assets\Images\Product\galaxy-note-20-3.jpg" />
+    <Content Include="Assets\Images\Product\galaxy-note-20-4.jpg" />
+    <Content Include="Assets\Images\Product\ipad-air-4-1.png" />
+    <Content Include="Assets\Images\Product\ipad-air-4-2.jpg" />
+    <Content Include="Assets\Images\Product\ipad-air-4-3.jpg" />
+    <Content Include="Assets\Images\Product\ipad-air-4-4.jpg" />
+    <Content Include="Assets\Images\Product\ipad-air-5-m1-1.png" />
+    <Content Include="Assets\Images\Product\ipad-air-5-m1-2.jpg" />
+    <Content Include="Assets\Images\Product\ipad-air-5-m1-3.jpg" />
+    <Content Include="Assets\Images\Product\ipad-air-5-m1-4.jpg" />
+    <Content Include="Assets\Images\Product\ipad-mini-6-wifi-cellular-1.png" />
+    <Content Include="Assets\Images\Product\ipad-mini-6-wifi-cellular-2 .jpg" />
+    <Content Include="Assets\Images\Product\ipad-mini-6-wifi-cellular-3 .jpg" />
+    <Content Include="Assets\Images\Product\ipad-mini-6-wifi-cellular-4.jpg" />
+    <Content Include="Assets\Images\Product\ipad-pro-m1-1.png" />
+    <Content Include="Assets\Images\Product\ipad-pro-m1-2.jpg" />
+    <Content Include="Assets\Images\Product\ipad-pro-m1-3.jpg" />
+    <Content Include="Assets\Images\Product\ipad-pro-m1-4.jpg" />
+    <Content Include="Assets\Images\Product\ipad-pro-m1-wifi-1.png" />
+    <Content Include="Assets\Images\Product\ipad-pro-m1-wifi-2.jpg" />
+    <Content Include="Assets\Images\Product\ipad-pro-m1-wifi-3.jpg" />
+    <Content Include="Assets\Images\Product\ipad-pro-m1-wifi-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-11-1.png" />
+    <Content Include="Assets\Images\Product\iphone-11-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-11-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-11-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-1.png" />
+    <Content Include="Assets\Images\Product\iphone-12-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-mini-1.png" />
+    <Content Include="Assets\Images\Product\iphone-12-mini-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-mini-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-mini-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-pro-1.png" />
+    <Content Include="Assets\Images\Product\iphone-12-pro-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-pro-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-pro-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-pro-max-1.png" />
+    <Content Include="Assets\Images\Product\iphone-12-pro-max-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-pro-max-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-12-pro-max-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-1.png" />
+    <Content Include="Assets\Images\Product\iphone-13-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-mini-1.png" />
+    <Content Include="Assets\Images\Product\iphone-13-mini-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-mini-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-mini-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-pro-1.png" />
+    <Content Include="Assets\Images\Product\iphone-13-pro-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-pro-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-13-pro-4.jpg" />
     <Content Include="Assets\Images\Product\iphone-13-pro-max-1.png" />
     <Content Include="Assets\Images\Product\iphone-13-pro-max-2.jpg" />
     <Content Include="Assets\Images\Product\iphone-13-pro-max-3.jpg" />
     <Content Include="Assets\Images\Product\iphone-13-pro-max-4.jpg" />
+    <Content Include="Assets\Images\Product\iphone-se-2022-1.png" />
+    <Content Include="Assets\Images\Product\iphone-se-2022-2.jpg" />
+    <Content Include="Assets\Images\Product\iphone-se-2022-3.jpg" />
+    <Content Include="Assets\Images\Product\iphone-se-2022-4.jpg" />
+    <Content Include="Assets\Images\Product\nokia-c30-1.png" />
+    <Content Include="Assets\Images\Product\nokia-c30-2.jpg" />
+    <Content Include="Assets\Images\Product\nokia-c30-3.jpg" />
+    <Content Include="Assets\Images\Product\nokia-c30-4.jpg" />
+    <Content Include="Assets\Images\Product\nokia-g21-1.png" />
+    <Content Include="Assets\Images\Product\nokia-g21-2.jpg" />
+    <Content Include="Assets\Images\Product\nokia-g21-3.jpg" />
+    <Content Include="Assets\Images\Product\nokia-g21-4.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-A74-1.png" />
+    <Content Include="Assets\Images\Product\Oppo-A74-2.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-A74-3.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-A74-4.jpg" />
+    <Content Include="Assets\Images\Product\oppo-a95-1.png" />
+    <Content Include="Assets\Images\Product\oppo-a95-2.jpg" />
+    <Content Include="Assets\Images\Product\oppo-a95-3.jpg" />
+    <Content Include="Assets\Images\Product\oppo-a95-4.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-Reno4-Pro-1.png" />
+    <Content Include="Assets\Images\Product\Oppo-Reno4-Pro-2.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-Reno4-Pro-3.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-Reno4-Pro-4.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-Reno5-1.png" />
+    <Content Include="Assets\Images\Product\Oppo-Reno5-2.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-Reno5-3.jpg" />
+    <Content Include="Assets\Images\Product\Oppo-Reno5-4.jpg" />
+    <Content Include="Assets\Images\Product\oppo-reno6-1.png" />
+    <Content Include="Assets\Images\Product\oppo-reno6-2.jpg" />
+    <Content Include="Assets\Images\Product\oppo-reno6-3.jpg" />
+    <Content Include="Assets\Images\Product\oppo-reno6-4.jpg" />
+    <Content Include="Assets\Images\Product\oppo-reno7-1.png" />
+    <Content Include="Assets\Images\Product\oppo-reno7-2.jpg" />
+    <Content Include="Assets\Images\Product\oppo-reno7-3.jpg" />
+    <Content Include="Assets\Images\Product\oppo-reno7-4.jpg" />
+    <Content Include="Assets\Images\Product\realme-c11-1.png" />
+    <Content Include="Assets\Images\Product\realme-c11-2.jpg" />
+    <Content Include="Assets\Images\Product\realme-c11-3.jpg" />
+    <Content Include="Assets\Images\Product\realme-c11-4.jpg" />
+    <Content Include="Assets\Images\Product\realme-c35-1.png" />
+    <Content Include="Assets\Images\Product\realme-c35-2.jpg" />
+    <Content Include="Assets\Images\Product\realme-c35-3.jpg" />
+    <Content Include="Assets\Images\Product\realme-c35-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a03-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a03-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a03-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a03-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a52s-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a52s-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a52s-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a52s-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a53-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a53-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a53-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-a53-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s21-fe-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s21-fe-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s21-fe-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s21-fe-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-plus-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-plus-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-plus-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-plus-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-ultra-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-ultra-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-ultra-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-s22-ultra-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-z-flip-3-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-z-flip-3-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-z-flip-3-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-z-flip-3-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-z-fold3-1.png" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-z-fold3-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-z-fold3-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-galaxy-z-fold3-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-a7-lite-1.png" />
+    <Content Include="Assets\Images\Product\samsung-tab-a7-lite-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-a7-lite-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-a7-lite-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-a8-1.png" />
+    <Content Include="Assets\Images\Product\samsung-tab-a8-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-a8-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-a8-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s7-1.png" />
+    <Content Include="Assets\Images\Product\samsung-tab-s7-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s7-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s7-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s8-1.png" />
+    <Content Include="Assets\Images\Product\samsung-tab-s8-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s8-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s8-4.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s8-plus-1.png" />
+    <Content Include="Assets\Images\Product\samsung-tab-s8-plus-2.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s8-plus-3.jpg" />
+    <Content Include="Assets\Images\Product\samsung-tab-s8-plus-4.jpg" />
+    <Content Include="Assets\Images\Product\vivo-v21-5g-1.png" />
+    <Content Include="Assets\Images\Product\vivo-v21-5g-2.jpg" />
+    <Content Include="Assets\Images\Product\vivo-v21-5g-3.jpg" />
+    <Content Include="Assets\Images\Product\vivo-v21-5g-4.jpg" />
+    <Content Include="Assets\Images\Product\vivo-y53s-1.png" />
+    <Content Include="Assets\Images\Product\vivo-y53s-2.jpg" />
+    <Content Include="Assets\Images\Product\vivo-y53s-3.jpg" />
+    <Content Include="Assets\Images\Product\vivo-y53s-4.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-11t-5g-1.png" />
+    <Content Include="Assets\Images\Product\xiaomi-11t-5g-2.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-11t-5g-3.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-11t-5g-4.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-mi-11t-pro-5g-1.png" />
+    <Content Include="Assets\Images\Product\xiaomi-mi-11t-pro-5g-2.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-mi-11t-pro-5g-3.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-mi-11t-pro-5g-4.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-10-pro-1.png" />
+    <Content Include="Assets\Images\Product\xiaomi-note-10-pro-2.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-10-pro-3.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-10-pro-4.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-11-1.png" />
+    <Content Include="Assets\Images\Product\xiaomi-note-11-2.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-11-3.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-11-4.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-11-pro-1.png" />
+    <Content Include="Assets\Images\Product\xiaomi-note-11-pro-2.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-11-pro-3.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-note-11-pro-4.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-pad-5-1.png" />
+    <Content Include="Assets\Images\Product\xiaomi-pad-5-2.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-pad-5-3.jpg" />
+    <Content Include="Assets\Images\Product\xiaomi-pad-5-4.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -325,6 +556,13 @@
     <Content Include="Models\EF\PhoneStoreModel.edmx.diagram">
       <DependentUpon>PhoneStoreModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\nhom01nt118 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\nt118mobilestore - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\PhoneAPI20220504162048 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\PhoneAPI20220504162048 - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\PhoneAPI20220504162048 - Web Deploy2.pubxml" />
+    <None Include="Properties\PublishProfiles\PhoneAPI20220504162048 - Web Deploy3.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -415,7 +653,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

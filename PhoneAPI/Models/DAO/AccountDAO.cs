@@ -31,7 +31,7 @@ namespace PhoneAPI.Models.DAO
         }
 
         //PhoneStoreEntities db = new PhoneStoreEntities();
-        PhoneStoreEntities2 db = new PhoneStoreEntities2();
+        PhoneStoreEntities3 db = new PhoneStoreEntities3();
 
         public async Task<List<AccountDTO>> GetAllAccount()
         {

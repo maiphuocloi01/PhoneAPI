@@ -10,7 +10,7 @@ namespace PhoneAPI.Models
     public class UserMasterRepository : IDisposable
     {
         // SECURITY_DBEntities it is your context class
-        PhoneStoreEntities2 context = new PhoneStoreEntities2();
+        PhoneStoreEntities3 context = new PhoneStoreEntities3();
         //This method is used to check and validate the user credentials
         public Account ValidateUser(string username, string password)
         {

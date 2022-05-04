@@ -16,6 +16,10 @@ namespace PhoneAPI.Models.DTO
 
         public int? Rating  { get; set; }
 
+        public string FullName { get; set; }
+        public string TypeProduct { get; set; }
+        public string CreateAt { get; set; }
+
         public string Content { get; set; }
 
         public bool? IsDelete { get; set; }
@@ -30,6 +34,9 @@ namespace PhoneAPI.Models.DTO
             Id = comment.Id;
             ProductId = comment.ProductId;
             AccountId = comment.AccountId;
+            FullName = comment.FullName;
+            CreateAt = comment.CreateAt;
+            TypeProduct = comment.TypeProduct;
             Rating = comment.Rating;
             Content = comment.Content;
             IsDelete = comment.IsDelete;

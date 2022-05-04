@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/nhom01/databases/PhoneStore",
+      "type": "mssql.azure",
+      "connectionId": "nhom01.database.windows.net"
+    },
+    "identityapp1": {
+      "type": "identityapp.aad"
+    }
+  }
+}

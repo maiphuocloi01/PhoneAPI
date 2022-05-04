@@ -17,6 +17,9 @@ namespace PhoneAPI.Models.EF
         public int Id { get; set; }
         public Nullable<int> AccountId { get; set; }
         public Nullable<int> ProductId { get; set; }
+        public string FullName { get; set; }
+        public string TypeProduct { get; set; }
+        public string CreateAt { get; set; }
         public Nullable<int> Rating { get; set; }
         public string Content { get; set; }
         public Nullable<bool> IsDelete { get; set; }

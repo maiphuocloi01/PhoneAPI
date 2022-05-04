@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PhoneStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PhoneStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Id" />
@@ -57,6 +57,9 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AccountId" Type="int" />
           <Property Name="ProductId" Type="int" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+          <Property Name="TypeProduct" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateAt" Type="nvarchar" MaxLength="100" />
           <Property Name="Rating" Type="int" />
           <Property Name="Content" Type="nvarchar" MaxLength="500" />
           <Property Name="IsDelete" Type="bit" />
@@ -150,7 +153,7 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="Price" Type="int" />
         </EntityType>
-        <Association Name="FK__Bank__AccountId__36B12243">
+        <Association Name="FK__Bank__AccountId__6EF57B66">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Bank" Type="Self.Bank" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,7 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bill__AccountId__398D8EEE">
+        <Association Name="FK__Bill__AccountId__71D1E811">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -174,7 +177,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bill__ProductId__3B75D760">
+        <Association Name="FK__Bill__ProductId__73BA3083">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -186,7 +189,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bill__ShipmentId__3A81B327">
+        <Association Name="FK__Bill__ShipmentId__72C60C4A">
           <End Role="Shipment" Type="Self.Shipment" Multiplicity="0..1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -198,7 +201,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comment__Account__4222D4EF">
+        <Association Name="FK__Comment__Account__7A672E12">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -210,7 +213,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comment__Product__4316F928">
+        <Association Name="FK__Comment__Product__7B5B524B">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -222,7 +225,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavoriteP__Accou__3E52440B">
+        <Association Name="FK__FavoriteP__Accou__76969D2E">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="FavoriteProduct" Type="Self.FavoriteProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -234,7 +237,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavoriteP__Produ__3F466844">
+        <Association Name="FK__FavoriteP__Produ__778AC167">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="FavoriteProduct" Type="Self.FavoriteProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,7 +249,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductDe__Produ__2D27B809">
+        <Association Name="FK__ProductDe__Produ__656C112C">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +261,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductVe__Produ__2A4B4B5E">
+        <Association Name="FK__ProductVe__Produ__628FA481">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,7 +273,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Shipment__Accoun__300424B4">
+        <Association Name="FK__Shipment__Accoun__68487DD7">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Shipment" Type="Self.Shipment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,7 +285,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShoppingC__Accou__32E0915F">
+        <Association Name="FK__ShoppingC__Accou__6B24EA82">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,7 +297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShoppingC__Produ__33D4B598">
+        <Association Name="FK__ShoppingC__Produ__6C190EBB">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,55 +321,55 @@
           <EntitySet Name="ProductVersion" EntityType="Self.ProductVersion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shipment" EntityType="Self.Shipment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Bank__AccountId__36B12243" Association="Self.FK__Bank__AccountId__36B12243">
+          <AssociationSet Name="FK__Bank__AccountId__6EF57B66" Association="Self.FK__Bank__AccountId__6EF57B66">
             <End Role="Account" EntitySet="Account" />
             <End Role="Bank" EntitySet="Bank" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bill__AccountId__398D8EEE" Association="Self.FK__Bill__AccountId__398D8EEE">
+          <AssociationSet Name="FK__Bill__AccountId__71D1E811" Association="Self.FK__Bill__AccountId__71D1E811">
             <End Role="Account" EntitySet="Account" />
             <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bill__ProductId__3B75D760" Association="Self.FK__Bill__ProductId__3B75D760">
+          <AssociationSet Name="FK__Bill__ProductId__73BA3083" Association="Self.FK__Bill__ProductId__73BA3083">
             <End Role="Product" EntitySet="Product" />
             <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bill__ShipmentId__3A81B327" Association="Self.FK__Bill__ShipmentId__3A81B327">
+          <AssociationSet Name="FK__Bill__ShipmentId__72C60C4A" Association="Self.FK__Bill__ShipmentId__72C60C4A">
             <End Role="Shipment" EntitySet="Shipment" />
             <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comment__Account__4222D4EF" Association="Self.FK__Comment__Account__4222D4EF">
+          <AssociationSet Name="FK__Comment__Account__7A672E12" Association="Self.FK__Comment__Account__7A672E12">
             <End Role="Account" EntitySet="Account" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comment__Product__4316F928" Association="Self.FK__Comment__Product__4316F928">
+          <AssociationSet Name="FK__Comment__Product__7B5B524B" Association="Self.FK__Comment__Product__7B5B524B">
             <End Role="Product" EntitySet="Product" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavoriteP__Accou__3E52440B" Association="Self.FK__FavoriteP__Accou__3E52440B">
+          <AssociationSet Name="FK__FavoriteP__Accou__76969D2E" Association="Self.FK__FavoriteP__Accou__76969D2E">
             <End Role="Account" EntitySet="Account" />
             <End Role="FavoriteProduct" EntitySet="FavoriteProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavoriteP__Produ__3F466844" Association="Self.FK__FavoriteP__Produ__3F466844">
+          <AssociationSet Name="FK__FavoriteP__Produ__778AC167" Association="Self.FK__FavoriteP__Produ__778AC167">
             <End Role="Product" EntitySet="Product" />
             <End Role="FavoriteProduct" EntitySet="FavoriteProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductDe__Produ__2D27B809" Association="Self.FK__ProductDe__Produ__2D27B809">
+          <AssociationSet Name="FK__ProductDe__Produ__656C112C" Association="Self.FK__ProductDe__Produ__656C112C">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductDetail" EntitySet="ProductDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductVe__Produ__2A4B4B5E" Association="Self.FK__ProductVe__Produ__2A4B4B5E">
+          <AssociationSet Name="FK__ProductVe__Produ__628FA481" Association="Self.FK__ProductVe__Produ__628FA481">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductVersion" EntitySet="ProductVersion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Shipment__Accoun__300424B4" Association="Self.FK__Shipment__Accoun__300424B4">
+          <AssociationSet Name="FK__Shipment__Accoun__68487DD7" Association="Self.FK__Shipment__Accoun__68487DD7">
             <End Role="Account" EntitySet="Account" />
             <End Role="Shipment" EntitySet="Shipment" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShoppingC__Accou__32E0915F" Association="Self.FK__ShoppingC__Accou__32E0915F">
+          <AssociationSet Name="FK__ShoppingC__Accou__6B24EA82" Association="Self.FK__ShoppingC__Accou__6B24EA82">
             <End Role="Account" EntitySet="Account" />
             <End Role="ShoppingCart" EntitySet="ShoppingCart" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShoppingC__Produ__33D4B598" Association="Self.FK__ShoppingC__Produ__33D4B598">
+          <AssociationSet Name="FK__ShoppingC__Produ__6C190EBB" Association="Self.FK__ShoppingC__Produ__6C190EBB">
             <End Role="Product" EntitySet="Product" />
             <End Role="ShoppingCart" EntitySet="ShoppingCart" />
           </AssociationSet>
@@ -391,12 +394,12 @@
           <Property Name="Gender" Type="Boolean" />
           <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Banks" Relationship="Self.FK__Bank__AccountId__36B12243" FromRole="Account" ToRole="Bank" />
-          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__AccountId__398D8EEE" FromRole="Account" ToRole="Bill" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__Account__4222D4EF" FromRole="Account" ToRole="Comment" />
-          <NavigationProperty Name="FavoriteProducts" Relationship="Self.FK__FavoriteP__Accou__3E52440B" FromRole="Account" ToRole="FavoriteProduct" />
-          <NavigationProperty Name="Shipments" Relationship="Self.FK__Shipment__Accoun__300424B4" FromRole="Account" ToRole="Shipment" />
-          <NavigationProperty Name="ShoppingCarts" Relationship="Self.FK__ShoppingC__Accou__32E0915F" FromRole="Account" ToRole="ShoppingCart" />
+          <NavigationProperty Name="Banks" Relationship="Self.FK__Bank__AccountId__6EF57B66" FromRole="Account" ToRole="Bank" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__AccountId__71D1E811" FromRole="Account" ToRole="Bill" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__Account__7A672E12" FromRole="Account" ToRole="Comment" />
+          <NavigationProperty Name="FavoriteProducts" Relationship="Self.FK__FavoriteP__Accou__76969D2E" FromRole="Account" ToRole="FavoriteProduct" />
+          <NavigationProperty Name="Shipments" Relationship="Self.FK__Shipment__Accoun__68487DD7" FromRole="Account" ToRole="Shipment" />
+          <NavigationProperty Name="ShoppingCarts" Relationship="Self.FK__ShoppingC__Accou__6B24EA82" FromRole="Account" ToRole="ShoppingCart" />
         </EntityType>
         <EntityType Name="Bank">
           <Key>
@@ -409,7 +412,7 @@
           <Property Name="ExpiredDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CVV" Type="Int32" />
           <Property Name="Brand" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Bank__AccountId__36B12243" FromRole="Bank" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Bank__AccountId__6EF57B66" FromRole="Bank" ToRole="Account" />
         </EntityType>
         <EntityType Name="Bill">
           <Key>
@@ -427,9 +430,9 @@
           <Property Name="ShipCost" Type="Int32" />
           <Property Name="Reason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="isDelete" Type="Boolean" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Bill__AccountId__398D8EEE" FromRole="Bill" ToRole="Account" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Bill__ProductId__3B75D760" FromRole="Bill" ToRole="Product" />
-          <NavigationProperty Name="Shipment" Relationship="Self.FK__Bill__ShipmentId__3A81B327" FromRole="Bill" ToRole="Shipment" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Bill__AccountId__71D1E811" FromRole="Bill" ToRole="Account" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Bill__ProductId__73BA3083" FromRole="Bill" ToRole="Product" />
+          <NavigationProperty Name="Shipment" Relationship="Self.FK__Bill__ShipmentId__72C60C4A" FromRole="Bill" ToRole="Shipment" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -438,11 +441,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AccountId" Type="Int32" />
           <Property Name="ProductId" Type="Int32" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TypeProduct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateAt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Rating" Type="Int32" />
           <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Comment__Account__4222D4EF" FromRole="Comment" ToRole="Account" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Comment__Product__4316F928" FromRole="Comment" ToRole="Product" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Comment__Account__7A672E12" FromRole="Comment" ToRole="Account" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Comment__Product__7B5B524B" FromRole="Comment" ToRole="Product" />
         </EntityType>
         <EntityType Name="FavoriteProduct">
           <Key>
@@ -451,8 +457,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AccountId" Type="Int32" />
           <Property Name="ProductId" Type="Int32" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__FavoriteP__Accou__3E52440B" FromRole="FavoriteProduct" ToRole="Account" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__FavoriteP__Produ__3F466844" FromRole="FavoriteProduct" ToRole="Product" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__FavoriteP__Accou__76969D2E" FromRole="FavoriteProduct" ToRole="Account" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__FavoriteP__Produ__778AC167" FromRole="FavoriteProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -483,12 +489,12 @@
           <Property Name="Category" Type="Boolean" />
           <Property Name="SellCount" Type="Int32" />
           <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__ProductId__3B75D760" FromRole="Product" ToRole="Bill" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__Product__4316F928" FromRole="Product" ToRole="Comment" />
-          <NavigationProperty Name="FavoriteProducts" Relationship="Self.FK__FavoriteP__Produ__3F466844" FromRole="Product" ToRole="FavoriteProduct" />
-          <NavigationProperty Name="ProductDetails" Relationship="Self.FK__ProductDe__Produ__2D27B809" FromRole="Product" ToRole="ProductDetail" />
-          <NavigationProperty Name="ProductVersions" Relationship="Self.FK__ProductVe__Produ__2A4B4B5E" FromRole="Product" ToRole="ProductVersion" />
-          <NavigationProperty Name="ShoppingCarts" Relationship="Self.FK__ShoppingC__Produ__33D4B598" FromRole="Product" ToRole="ShoppingCart" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__ProductId__73BA3083" FromRole="Product" ToRole="Bill" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__Product__7B5B524B" FromRole="Product" ToRole="Comment" />
+          <NavigationProperty Name="FavoriteProducts" Relationship="Self.FK__FavoriteP__Produ__778AC167" FromRole="Product" ToRole="FavoriteProduct" />
+          <NavigationProperty Name="ProductDetails" Relationship="Self.FK__ProductDe__Produ__656C112C" FromRole="Product" ToRole="ProductDetail" />
+          <NavigationProperty Name="ProductVersions" Relationship="Self.FK__ProductVe__Produ__628FA481" FromRole="Product" ToRole="ProductVersion" />
+          <NavigationProperty Name="ShoppingCarts" Relationship="Self.FK__ShoppingC__Produ__6C190EBB" FromRole="Product" ToRole="ShoppingCart" />
         </EntityType>
         <EntityType Name="ProductDetail">
           <Key>
@@ -505,7 +511,7 @@
           <Property Name="Memory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SIM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Battery" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__ProductDe__Produ__2D27B809" FromRole="ProductDetail" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__ProductDe__Produ__656C112C" FromRole="ProductDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductVersion">
           <Key>
@@ -516,7 +522,7 @@
           <Property Name="VersionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Color" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__ProductVe__Produ__2A4B4B5E" FromRole="ProductVersion" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__ProductVe__Produ__628FA481" FromRole="ProductVersion" ToRole="Product" />
         </EntityType>
         <EntityType Name="Shipment">
           <Key>
@@ -531,8 +537,8 @@
           <Property Name="TypeAddress" Type="Boolean" />
           <Property Name="IsDelete" Type="Boolean" />
           <Property Name="IsDefault" Type="Boolean" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Shipment__Accoun__300424B4" FromRole="Shipment" ToRole="Account" />
-          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__ShipmentId__3A81B327" FromRole="Shipment" ToRole="Bill" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Shipment__Accoun__68487DD7" FromRole="Shipment" ToRole="Account" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__ShipmentId__72C60C4A" FromRole="Shipment" ToRole="Bill" />
         </EntityType>
         <EntityType Name="ShoppingCart">
           <Key>
@@ -544,10 +550,10 @@
           <Property Name="TypeProduct" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Price" Type="Int32" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__ShoppingC__Accou__32E0915F" FromRole="ShoppingCart" ToRole="Account" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__ShoppingC__Produ__33D4B598" FromRole="ShoppingCart" ToRole="Product" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__ShoppingC__Accou__6B24EA82" FromRole="ShoppingCart" ToRole="Account" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__ShoppingC__Produ__6C190EBB" FromRole="ShoppingCart" ToRole="Product" />
         </EntityType>
-        <Association Name="FK__Bank__AccountId__36B12243">
+        <Association Name="FK__Bank__AccountId__6EF57B66">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Bank" Type="Self.Bank" Multiplicity="*" />
           <ReferentialConstraint>
@@ -559,7 +565,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bill__AccountId__398D8EEE">
+        <Association Name="FK__Bill__AccountId__71D1E811">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -571,7 +577,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comment__Account__4222D4EF">
+        <Association Name="FK__Comment__Account__7A672E12">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -583,7 +589,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavoriteP__Accou__3E52440B">
+        <Association Name="FK__FavoriteP__Accou__76969D2E">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="FavoriteProduct" Type="Self.FavoriteProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -595,7 +601,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Shipment__Accoun__300424B4">
+        <Association Name="FK__Shipment__Accoun__68487DD7">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Shipment" Type="Self.Shipment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -607,7 +613,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShoppingC__Accou__32E0915F">
+        <Association Name="FK__ShoppingC__Accou__6B24EA82">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -619,7 +625,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bill__ProductId__3B75D760">
+        <Association Name="FK__Bill__ProductId__73BA3083">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -631,7 +637,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bill__ShipmentId__3A81B327">
+        <Association Name="FK__Bill__ShipmentId__72C60C4A">
           <End Role="Shipment" Type="Self.Shipment" Multiplicity="0..1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -643,7 +649,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comment__Product__4316F928">
+        <Association Name="FK__Comment__Product__7B5B524B">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -655,7 +661,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavoriteP__Produ__3F466844">
+        <Association Name="FK__FavoriteP__Produ__778AC167">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="FavoriteProduct" Type="Self.FavoriteProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -667,7 +673,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductDe__Produ__2D27B809">
+        <Association Name="FK__ProductDe__Produ__656C112C">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -679,7 +685,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductVe__Produ__2A4B4B5E">
+        <Association Name="FK__ProductVe__Produ__628FA481">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -691,7 +697,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShoppingC__Produ__33D4B598">
+        <Association Name="FK__ShoppingC__Produ__6C190EBB">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -703,7 +709,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PhoneStoreEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PhoneStoreEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Banks" EntityType="Self.Bank" />
           <EntitySet Name="Bills" EntityType="Self.Bill" />
@@ -715,55 +721,55 @@
           <EntitySet Name="ProductVersions" EntityType="Self.ProductVersion" />
           <EntitySet Name="Shipments" EntityType="Self.Shipment" />
           <EntitySet Name="ShoppingCarts" EntityType="Self.ShoppingCart" />
-          <AssociationSet Name="FK__Bank__AccountId__36B12243" Association="Self.FK__Bank__AccountId__36B12243">
+          <AssociationSet Name="FK__Bank__AccountId__6EF57B66" Association="Self.FK__Bank__AccountId__6EF57B66">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Bank" EntitySet="Banks" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bill__AccountId__398D8EEE" Association="Self.FK__Bill__AccountId__398D8EEE">
+          <AssociationSet Name="FK__Bill__AccountId__71D1E811" Association="Self.FK__Bill__AccountId__71D1E811">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Bill" EntitySet="Bills" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comment__Account__4222D4EF" Association="Self.FK__Comment__Account__4222D4EF">
+          <AssociationSet Name="FK__Comment__Account__7A672E12" Association="Self.FK__Comment__Account__7A672E12">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavoriteP__Accou__3E52440B" Association="Self.FK__FavoriteP__Accou__3E52440B">
+          <AssociationSet Name="FK__FavoriteP__Accou__76969D2E" Association="Self.FK__FavoriteP__Accou__76969D2E">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Shipment__Accoun__300424B4" Association="Self.FK__Shipment__Accoun__300424B4">
+          <AssociationSet Name="FK__Shipment__Accoun__68487DD7" Association="Self.FK__Shipment__Accoun__68487DD7">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Shipment" EntitySet="Shipments" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShoppingC__Accou__32E0915F" Association="Self.FK__ShoppingC__Accou__32E0915F">
+          <AssociationSet Name="FK__ShoppingC__Accou__6B24EA82" Association="Self.FK__ShoppingC__Accou__6B24EA82">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bill__ProductId__3B75D760" Association="Self.FK__Bill__ProductId__3B75D760">
+          <AssociationSet Name="FK__Bill__ProductId__73BA3083" Association="Self.FK__Bill__ProductId__73BA3083">
             <End Role="Product" EntitySet="Products" />
             <End Role="Bill" EntitySet="Bills" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bill__ShipmentId__3A81B327" Association="Self.FK__Bill__ShipmentId__3A81B327">
+          <AssociationSet Name="FK__Bill__ShipmentId__72C60C4A" Association="Self.FK__Bill__ShipmentId__72C60C4A">
             <End Role="Shipment" EntitySet="Shipments" />
             <End Role="Bill" EntitySet="Bills" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comment__Product__4316F928" Association="Self.FK__Comment__Product__4316F928">
+          <AssociationSet Name="FK__Comment__Product__7B5B524B" Association="Self.FK__Comment__Product__7B5B524B">
             <End Role="Product" EntitySet="Products" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavoriteP__Produ__3F466844" Association="Self.FK__FavoriteP__Produ__3F466844">
+          <AssociationSet Name="FK__FavoriteP__Produ__778AC167" Association="Self.FK__FavoriteP__Produ__778AC167">
             <End Role="Product" EntitySet="Products" />
             <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductDe__Produ__2D27B809" Association="Self.FK__ProductDe__Produ__2D27B809">
+          <AssociationSet Name="FK__ProductDe__Produ__656C112C" Association="Self.FK__ProductDe__Produ__656C112C">
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductDetail" EntitySet="ProductDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductVe__Produ__2A4B4B5E" Association="Self.FK__ProductVe__Produ__2A4B4B5E">
+          <AssociationSet Name="FK__ProductVe__Produ__628FA481" Association="Self.FK__ProductVe__Produ__628FA481">
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductVersion" EntitySet="ProductVersions" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShoppingC__Produ__33D4B598" Association="Self.FK__ShoppingC__Produ__33D4B598">
+          <AssociationSet Name="FK__ShoppingC__Produ__6C190EBB" Association="Self.FK__ShoppingC__Produ__6C190EBB">
             <End Role="Product" EntitySet="Products" />
             <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
           </AssociationSet>
@@ -773,7 +779,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PhoneStoreModelStoreContainer" CdmEntityContainer="PhoneStoreEntities2">
+        <EntityContainerMapping StorageEntityContainer="PhoneStoreModelStoreContainer" CdmEntityContainer="PhoneStoreEntities3">
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="PhoneStoreModel.Account">
               <MappingFragment StoreEntitySet="Account">
@@ -828,6 +834,9 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="TypeProduct" ColumnName="TypeProduct" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />

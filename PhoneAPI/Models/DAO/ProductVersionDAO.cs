@@ -28,7 +28,7 @@ namespace PhoneAPI.Models.DAO
 
         //PhoneStoreEntities db = new PhoneStoreEntities();
         //PhoneStoreEntities1 db = new PhoneStoreEntities1();
-        PhoneStoreEntities2 db = new PhoneStoreEntities2();
+        PhoneStoreEntities3 db = new PhoneStoreEntities3();
         public async Task<List<ProductVersionDTO>> GetProductVersionByProductId(int Id)
         {
             var result = (await db.ProductVersions

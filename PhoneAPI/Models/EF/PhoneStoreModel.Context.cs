@@ -13,10 +13,10 @@ namespace PhoneAPI.Models.EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PhoneStoreEntities2 : DbContext
+    public partial class PhoneStoreEntities3 : DbContext
     {
-        public PhoneStoreEntities2()
-            : base("name=PhoneStoreEntities2")
+        public PhoneStoreEntities3()
+            : base("name=PhoneStoreEntities3")
         {
         }
     

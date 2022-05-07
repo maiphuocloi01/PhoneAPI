@@ -34,7 +34,7 @@ namespace PhoneAPI.Models.DAO
             var resulList = (await db.ShoppingCarts
                         .ToListAsync())
                         .Select(b => new ShoppingCartDTO(b))
-                        .ToList();           
+                        .ToList();
             return resulList;
         }
 
@@ -67,13 +67,13 @@ namespace PhoneAPI.Models.DAO
         }
         public async Task<int> AddShoppingCart(ShoppingCartDTO cartDTO)
         {
-            ShoppingCart cart = new ShoppingCart()
+            /*ShoppingCart cart = new ShoppingCart()
             {
                 ProductId = cartDTO.ProductId,
                 AccountId = cartDTO.AccountId,
                 Price = cartDTO.Price,
-                /*Memory = cartDTO.Memory,
-                Color = cartDTO.Color,*/
+                *//*Memory = cartDTO.Memory,
+                Color = cartDTO.Color,*//*
                 TypeProduct = cartDTO.TypeProduct,
                 Quantity = 1
             };
@@ -91,6 +91,38 @@ namespace PhoneAPI.Models.DAO
                 else
                 {
                     return -1;
+                }
+            }
+            catch (Exception e)
+            {
+                return -1;
+                throw e;
+            }*/
+
+            var cart = db.ShoppingCarts.FirstOrDefault(c => c.ProductId == cartDTO.ProductId &&
+            c.AccountId == cartDTO.AccountId && c.TypeProduct.Equals(cartDTO.TypeProduct));
+
+            try
+            {
+                if(cart != null)
+                {
+                    cart.Quantity += cartDTO.Quantity;
+                    return cart.Id;
+                }
+                else
+                {
+                    ShoppingCart sCart = new ShoppingCart()
+                    {
+                        ProductId = cartDTO.ProductId,
+                        AccountId = cartDTO.AccountId,
+                        Price = cartDTO.Price,
+                        TypeProduct = cartDTO.TypeProduct,
+                        Quantity = 1
+                    };
+
+                    db.ShoppingCarts.Add(sCart);
+                    await db.SaveChangesAsync();
+                    return sCart.Id;
                 }
             }
             catch (Exception e)
@@ -123,7 +155,7 @@ namespace PhoneAPI.Models.DAO
             try
             {
 
-                result.Quantity = quantity;              
+                result.Quantity = quantity;
 
                 await db.SaveChangesAsync();
                 return true;

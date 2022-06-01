@@ -41,6 +41,7 @@ namespace PhoneAPI.Controllers
         [HttpGet]
         public IHttpActionResult LoginWithToken()
         {
+            
             var identity = (ClaimsIdentity)User.Identity;
             /*if(!identity.Name.Equals(""))
             {
@@ -223,6 +224,14 @@ namespace PhoneAPI.Controllers
         public async Task<IHttpActionResult> DeleteFavoriteProductByID(int Id)
         {
             return Ok(await FavoriteProductDAO.Instance.DeleteFavoriteProductByID(Id));
+        }
+
+        [Route("Api/AccountController/DeleteFavoriteProductById/{AccountId}/{ProductId}")]
+        [AllowAnonymous]
+        [HttpDelete]
+        public async Task<IHttpActionResult> DeleteFavoriteByAccountId(int AccountId, int ProductId)
+        {
+            return Ok(await FavoriteProductDAO.Instance.DeleteFavoriteByAccountId(AccountId, ProductId));
         }
     }
 }

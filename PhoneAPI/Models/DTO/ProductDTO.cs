@@ -44,6 +44,7 @@ namespace PhoneAPI.Models.DTO
         public bool? IsDelete { get; set; }
 
         public List<CommentDTO> Comments { get; set; }
+        public List<BillDTO> Bills { get; set; }
 
         public List<ProductVersionDTO> ProductVersions { get; set; }
 
@@ -73,7 +74,7 @@ namespace PhoneAPI.Models.DTO
             IsDelete = product.IsDelete;
             Category = product.Category;
             Rating = product.Rating;
-            SellCount = product.SellCount;
+            //SellCount = product.SellCount;
 
             //CategoryID = product.CategoryID;
             //CategoryName = product.Category.DisplayName;
@@ -86,10 +87,11 @@ namespace PhoneAPI.Models.DTO
                                         .Select(productDetail => new ProductDetailDTO(productDetail))
                                         .ToList();
             Comments = product.Comments.Select(c => new CommentDTO(c)).ToList();
+            Bills = product.Bills.Select(b => new BillDTO(b)).ToList();
             //IsDeleted = product.IsDeleted;
             //BillDetails = product.BillDetails.Select(b => new BillDetailDTO(b)).ToList();
             Rating = Comments.Count > 0 ? Math.Round((double)product.Comments.Average(c => c.Rating), 1) : 0;
-            //SellCount = BillDetails.Count > 0 ? product.BillDetails.Sum(b => b.TotalCount) : 0;
+            SellCount = Bills.Count > 0 ? product.Bills.Where(b => b.Status == 1 || b.Status == 2).Sum(b => b.Quantity) : 0;
 
         }
     }

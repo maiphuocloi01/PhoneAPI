@@ -36,6 +36,29 @@ namespace PhoneAPI.Models.DAO
                         .Select(product => new ProductDTO(product))
                         .ToList();
             ProductList = ProductList.FindAll(b => b.IsDelete == false);
+            /*var ProductList = (await db.Products
+                        .ToListAsync())
+                        .Select(product => new
+                        {
+                            Id = product.Id,
+                            Brand = product.Brand,
+                            ProductName = product.ProductName,
+                            Description = product.Description,
+                            Memory = product.Memory,
+                            RAM = product.RAM,
+                            ScreenSize = product.ScreenSize,
+                            Rating = product.Rating,
+                            Image1 = product.Image1,
+                            Image2 = product.Image2,
+                            Image3 = product.Image3,
+                            Image4 = product.Image4,
+                            Price = product.Price,
+                            SellCount = product.SellCount,
+                            Category = product.Category,
+                            IsDelete = product.IsDelete,
+                        })
+                        .ToList();
+            ProductList = ProductList.FindAll(b => b.IsDelete == false);*/
             return ProductList;
         }
 
@@ -80,20 +103,32 @@ namespace PhoneAPI.Models.DAO
             var result = db.Products.SingleOrDefault(p => p.Id == productDTO.Id);
             try
             {
-                result.ProductName = productDTO.ProductName;
-                result.Price = productDTO.Price;
-                result.Brand = productDTO.Brand;
-                result.Description = productDTO.Description;
-                result.Image1 = productDTO.Image1;
-                result.Image2 = productDTO.Image2;
-                result.Image3 = productDTO.Image3;
-                result.Image4 = productDTO.Image4;
+                if (!string.IsNullOrWhiteSpace(productDTO.ProductName))
+                    result.ProductName = productDTO.ProductName;
+                if (productDTO.Price != null)
+                    result.Price = productDTO.Price;
+                if (!string.IsNullOrWhiteSpace(productDTO.Brand))
+                    result.Brand = productDTO.Brand;
+                if (!string.IsNullOrWhiteSpace(productDTO.Description))
+                    result.Description = productDTO.Description;
+                if (!string.IsNullOrWhiteSpace(productDTO.Image1))
+                    result.Image1 = productDTO.Image1;
+                if (!string.IsNullOrWhiteSpace(productDTO.Image2))
+                    result.Image2 = productDTO.Image2;
+                if (!string.IsNullOrWhiteSpace(productDTO.Image3))
+                    result.Image3 = productDTO.Image3;
+                if (!string.IsNullOrWhiteSpace(productDTO.Image4))
+                    result.Image4 = productDTO.Image4;
                 /*result.Color = productDTO.Color;
                 result.Info = productDTO.Info;*/
-                result.Memory = productDTO.Memory;
-                result.RAM = productDTO.RAM;
-                result.ScreenSize = productDTO.ScreenSize;
-                result.Category = productDTO.Category;
+                if (productDTO.Memory != null)
+                    result.Memory = productDTO.Memory;
+                if (productDTO.RAM != null)
+                    result.RAM = productDTO.RAM;
+                if (productDTO.ScreenSize != null)
+                    result.ScreenSize = productDTO.ScreenSize;
+                if (productDTO.Category != null)
+                    result.Category = productDTO.Category;
              
                 await db.SaveChangesAsync();
                 return true;
@@ -122,19 +157,14 @@ namespace PhoneAPI.Models.DAO
             }
         }
 
-        public async Task<bool> RestoreAllProduct()
+        public async Task<bool> RestoreProductById(int Id)
         {
-            var List = (await db.Products
-                        .ToListAsync())
-                        .Select(product => new ProductDTO(product))
-                        .ToList();
+            var result = db.Products.SingleOrDefault(b => b.Id == Id);
 
             try
             {
-                var DeletedList = db.Products.Where(b => b.IsDelete == true).ToList();
-                DeletedList.ForEach(b => b.IsDelete = false);
-                db.SaveChanges();
-
+                result.IsDelete = false;
+                await db.SaveChangesAsync();
                 return true;
             }
             catch (Exception e)

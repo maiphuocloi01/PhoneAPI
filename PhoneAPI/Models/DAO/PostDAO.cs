@@ -35,6 +35,7 @@ namespace PhoneAPI.Models.DAO
             return (await db.Posts
                         .ToListAsync())
                         .Select(advertisement => new PostDTO(advertisement))
+                        .OrderByDescending(ad => ad.Id)
                         .ToList();
         }
 

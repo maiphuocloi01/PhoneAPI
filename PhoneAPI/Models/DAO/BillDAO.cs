@@ -35,6 +35,7 @@ namespace PhoneAPI.Models.DAO
             var resulList = (await db.Bills
                         .ToListAsync())
                         .Select(b => new BillDTO(b))
+                        .OrderByDescending(s => s.Id)
                         .ToList();
             return resulList;
         }
@@ -44,6 +45,7 @@ namespace PhoneAPI.Models.DAO
             var Bill = (await db.Bills
                 .ToListAsync())
                 .Select(bill => new BillDTO(bill))
+                .OrderByDescending(s => s.Id)
                 .ToList();
             Bill = Bill.FindAll(f => f.AccountId == Id);
             return Bill;
@@ -76,6 +78,7 @@ namespace PhoneAPI.Models.DAO
                         .Select(product => new BillDTO(product))
                         .OrderBy(Bills => Bills.CreateAt.Equals(date))
                         .ToList();
+                billtList = billtList.FindAll(b => b.Status == 1 || b.Status == 2);
                 return billtList;
             }
             catch (Exception e)
@@ -95,6 +98,7 @@ namespace PhoneAPI.Models.DAO
                         .Select(product => new BillDTO(product))
                         .OrderBy(Bills => Bills.CreateAt.Substring(Bills.CreateAt.Length - 7).Equals(date))
                         .ToList();
+                billtList = billtList.FindAll(b => b.Status == 1 || b.Status == 2);
                 return billtList;
             }
             catch (Exception e)
@@ -115,6 +119,7 @@ namespace PhoneAPI.Models.DAO
                        .Select(product => new BillDTO(product))
                        .OrderBy(Bills => Bills.CreateAt.Substring(Bills.CreateAt.Length - 4).Equals(date))
                        .ToList();
+                billtList = billtList.FindAll(b => b.Status == 1 || b.Status == 2);
                 return billtList;
             }
             catch (Exception e)
@@ -135,6 +140,7 @@ namespace PhoneAPI.Models.DAO
                 Quantity = billDTO.Quantity,
                 Status = billDTO.Status,
                 TotalPrice = billDTO.TotalPrice,
+                TypeProduct = billDTO.TypeProduct,
                 ShipCost = billDTO.ShipCost,
                 Reason = billDTO.Reason,
                 isDelete = false
@@ -142,22 +148,47 @@ namespace PhoneAPI.Models.DAO
 
             try
             {
-                var Bill = await db.Bills.SingleOrDefaultAsync(f => f.AccountId == bill.AccountId && f.ProductId == bill.ProductId && f.ShipmentId == bill.ShipmentId);
+                //var Bill = await db.Bills.SingleOrDefaultAsync(f => f.AccountId == bill.AccountId && f.ShipmentId == bill.ShipmentId);
 
-                if (Bill == null)
-                {
+                //if (Bill == null)
+                //{
                     db.Bills.Add(bill);
                     await db.SaveChangesAsync();
                     return bill.Id;
-                }
-                else
-                {
-                    return -1;
-                }
+               // }
+                //else
+                //{
+                   // return -1;
+                //}
             }
             catch (Exception e)
             {
                 return -1;
+                throw e;
+            }
+        }
+
+        public async Task<bool> UpdateBill(BillDTO billDTO)
+        {
+            var result = db.Bills.SingleOrDefault(p => p.Id == billDTO.Id);
+
+            try
+            {
+               
+                if ((billDTO.Status != null))
+                    result.Status = billDTO.Status;
+                if (!string.IsNullOrWhiteSpace(billDTO.CreateAt))
+                    result.CreateAt = billDTO.CreateAt;
+                if (!string.IsNullOrWhiteSpace(billDTO.TypeProduct))
+                    result.TypeProduct = billDTO.TypeProduct;
+                if (!string.IsNullOrWhiteSpace(billDTO.Reason))
+                    result.Reason = billDTO.Reason;
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
                 throw e;
             }
         }

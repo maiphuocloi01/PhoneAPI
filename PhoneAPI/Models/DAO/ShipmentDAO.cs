@@ -44,6 +44,7 @@ namespace PhoneAPI.Models.DAO
             var ShipmentList = (await db.Shipments
                 .ToListAsync())
                 .Select(shipment => new ShipmentDTO(shipment))
+                .OrderByDescending(s => s.Id)
                 .ToList();
             ShipmentList = ShipmentList.FindAll(f => f.AccountId == Id);
             return ShipmentList;
@@ -127,7 +128,7 @@ namespace PhoneAPI.Models.DAO
                 result.Address = shipmentDTO.Address;
                 result.Street = shipmentDTO.Street;
                 result.TypeAddress = shipmentDTO.TypeAddress;
-                result.IsDefault = shipmentDTO.IsDefault;             
+                result.IsDefault = shipmentDTO.IsDefault;
 
                 await db.SaveChangesAsync();
                 return true;

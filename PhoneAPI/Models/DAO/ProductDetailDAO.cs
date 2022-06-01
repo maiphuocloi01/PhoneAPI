@@ -54,6 +54,14 @@ namespace PhoneAPI.Models.DAO
                 SIM = productDetailDTO.SIM,
                 Battery = productDetailDTO.Battery
             };
+
+            /*Product product = db.Products.SingleOrDefault(p => p.Id == result.ProductId);
+            product.ProductDetails.Add(result);
+            db.Entry(product).State = EntityState.Modified;
+            
+
+            db.Entry(result).State = EntityState.Added;*/
+
             try
             {
                 var productDetail = await db.ProductDetails.SingleOrDefaultAsync(f => f.ProductId == result.ProductId);

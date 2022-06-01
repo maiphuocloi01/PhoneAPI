@@ -172,7 +172,7 @@ namespace PhoneAPI.Models.DAO
 
                     body += "Mã xác thực OTP của bạn là: <b>" + OTP + "</b><br/><br/>";
                     body += "Vui lòng không cung cấp mã OTP cho bất kì ai khác.<br/><br/>";
-                    body += "Cảm ơn đã đăng ký,<br/><br/>";
+                    //body += "Cảm ơn đã đăng ký,<br/><br/>";
                     body += "-----------------------------<br/>";
                     body += "<b>Cửa hàng Mobile Store</b><br/>";
                     body += "<b>Phone:</b> (84) 918 475 646<br/>";                

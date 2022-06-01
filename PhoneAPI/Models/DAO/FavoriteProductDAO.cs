@@ -35,6 +35,7 @@ namespace PhoneAPI.Models.DAO
             var FavoriteProductList = (await db.FavoriteProducts
                 .ToListAsync())
                 .Select(favoriteproduct => new FavoriteProductDTO(favoriteproduct))
+                .OrderByDescending(s => s.Id)
                 .ToList();
             FavoriteProductList = FavoriteProductList.FindAll(f => f.AccountId == Id);
             return FavoriteProductList;
@@ -72,6 +73,23 @@ namespace PhoneAPI.Models.DAO
         public async Task<bool> DeleteFavoriteProductByID(int Id)
         {
             var result = db.FavoriteProducts.SingleOrDefault(f => f.Id == Id);
+
+            try
+            {
+                db.FavoriteProducts.Remove(result);
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
+
+        public async Task<bool> DeleteFavoriteByAccountId(int AccountId, int ProductId)
+        {
+            var result = db.FavoriteProducts.SingleOrDefault(f => f.AccountId == AccountId && f.ProductId == ProductId);
 
             try
             {

@@ -90,6 +90,7 @@ namespace PhoneAPI.Models.DAO
             var resultList = (await db.Banks
                 .ToListAsync())
                 .Select(b => new BankDTO(b))
+                .OrderByDescending(s => s.Id)
                 .ToList();
             resultList = resultList.FindAll(b => b.AccountId == Id);
             return resultList;

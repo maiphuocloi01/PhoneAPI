@@ -50,9 +50,10 @@ namespace PhoneAPI.Models.DAO
             };
             try
             {
-                var productVersion = await db.ProductVersions.SingleOrDefaultAsync(f => f.ProductId == result.ProductId);
+                //var productVersion = await db.ProductVersions.SingleOrDefaultAsync(f => f.ProductId == result.ProductId);
+                var product = await db.Products.SingleOrDefaultAsync(f => f.Id == result.ProductId);
 
-                if (productVersion == null)
+                if (product != null)
                 {
                     db.ProductVersions.Add(result);
                     await db.SaveChangesAsync();

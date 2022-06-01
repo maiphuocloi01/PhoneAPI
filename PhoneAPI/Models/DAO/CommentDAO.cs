@@ -122,6 +122,7 @@ namespace PhoneAPI.Models.DAO
             var resultList = (await db.Comments
                 .ToListAsync())
                 .Select(c => new CommentDTO(c))
+                .OrderByDescending(s => s.Id)
                 .ToList();
             resultList = resultList.FindAll(c => c.ProductId == Id);
             return resultList;

@@ -34,6 +34,7 @@ namespace PhoneAPI.Models.DAO
             var resulList = (await db.ShoppingCarts
                         .ToListAsync())
                         .Select(b => new ShoppingCartDTO(b))
+                        .OrderByDescending(s => s.Id)
                         .ToList();
             return resulList;
         }
@@ -43,6 +44,7 @@ namespace PhoneAPI.Models.DAO
             var ShoppingCartList = (await db.ShoppingCarts
                 .ToListAsync())
                 .Select(shoppingcart => new ShoppingCartDTO(shoppingcart))
+                .OrderByDescending(s => s.Id)
                 .ToList();
             ShoppingCartList = ShoppingCartList.FindAll(f => f.AccountId == Id);
             return ShoppingCartList;
@@ -106,7 +108,7 @@ namespace PhoneAPI.Models.DAO
             {
                 if(cart != null)
                 {
-                    cart.Quantity += cartDTO.Quantity;
+                    cart.Quantity++;
                     return cart.Id;
                 }
                 else

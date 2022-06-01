@@ -1,5 +1,6 @@
 ﻿using PhoneAPI.Models.DAO;
 using PhoneAPI.Models.DTO;
+using PhoneAPI.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,37 @@ namespace PhoneAPI.Controllers
 {
     public class ProductController : ApiController
     {
+
+        PhoneStoreEntities3 db = new PhoneStoreEntities3();
+
         [Route("Api/ProductController/GetAllProduct")]
         [AllowAnonymous]
         [HttpGet]
         public async Task<IHttpActionResult> GetAllProduct()
         {
+            /*var products = from product in db.Products.Where(product => product.IsDelete == false)
+                           join c in db.Comments on product.Id equals c.ProductId
+                           select new
+                        {
+                            Id = product.Id,
+                            Brand = product.Brand,
+                            ProductName = product.ProductName,
+                            Description = product.Description,
+                            Memory = product.Memory,
+                            RAM = product.RAM,
+                            ScreenSize = product.ScreenSize,
+                            Rating = Math.Round((double)product.Comments.Average(comment => comment.Rating), 1),
+                            Image1 = product.Image1,
+                            Image2 = product.Image2,
+                            Image3 = product.Image3,
+                            Image4 = product.Image4,
+                            Price = product.Price,
+                            SellCount = product.SellCount,
+                            Category = product.Category,
+                            IsDelete = product.IsDelete
+                        };*/
             return Ok(await ProductDAO.Instance.GetAllProduct());
+            //return Ok(products);
         }
 
 
@@ -66,14 +92,15 @@ namespace PhoneAPI.Controllers
         {
             return Ok(await ProductDAO.Instance.DeleteProduct(ID));
         }
-/*
-        [Route("Api/ProductController/RestoreAllProduct")]
+
+
+        [Route("Api/ProductController/RestoreProduct/{ID}")]
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IHttpActionResult> RestoreAllProduct()
+        public async Task<IHttpActionResult> RestoreAllProduct(int ID)
         {
-            return Ok(await ProductDAO.Instance.RestoreAllProduct());
-        }*/
+            return Ok(await ProductDAO.Instance.RestoreProductById(ID));
+        }
 
         [Route("Api/ProductController/AddProductDetail")]
         [AllowAnonymous]

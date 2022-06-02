@@ -36,6 +36,7 @@ namespace PhoneAPI.Models.DAO
                         .ToListAsync())
                         .Select(b => new ShipmentDTO(b))
                         .ToList();
+            resulList = resulList.FindAll(b => b.IsDelete == false);
             return resulList;
         }
 
@@ -46,7 +47,8 @@ namespace PhoneAPI.Models.DAO
                 .Select(shipment => new ShipmentDTO(shipment))
                 .OrderByDescending(s => s.Id)
                 .ToList();
-            ShipmentList = ShipmentList.FindAll(f => f.AccountId == Id);
+            ShipmentList = ShipmentList.FindAll(f => f.AccountId == Id && f.IsDelete == false);
+
             return ShipmentList;
         }
 
@@ -81,12 +83,12 @@ namespace PhoneAPI.Models.DAO
                 IsDelete = false
             };
 
-            Account account = db.Accounts.SingleOrDefault(c => c.Id == shipment.AccountId);
+            /*Account account = db.Accounts.SingleOrDefault(c => c.Id == shipment.AccountId);
             shipment.Account = account;
 
 
 
-            db.Entry(shipment).State = EntityState.Added;
+            db.Entry(shipment).State = EntityState.Added;*/
 
             try
             {
@@ -107,7 +109,7 @@ namespace PhoneAPI.Models.DAO
 
             try
             {
-                db.Shipments.Remove(result);
+                result.IsDelete = true;
                 await db.SaveChangesAsync();
                 return true;
             }
